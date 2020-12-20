@@ -65,6 +65,8 @@
     #elif USE_DEV_LIB
         #include "RPI_sysfs_gpio.h"
         #include "dev_hardware_SPI.h"
+    #elif USE_PIGPIO_LIB
+        #include <pigpio.h>
     #endif
 #endif
 

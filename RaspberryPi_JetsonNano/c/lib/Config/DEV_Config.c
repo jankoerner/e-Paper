@@ -38,6 +38,12 @@ int EPD_DC_PIN;
 int EPD_CS_PIN;
 int EPD_BUSY_PIN;
 
+#ifdef RPI
+#ifdef USE_PIGPIO_LIB
+	int spiHandle = -1;
+#endif
+#endif
+
 /**
  * GPIO read and write
 **/
@@ -50,6 +56,8 @@ void DEV_Digital_Write(UWORD Pin, UBYTE Value)
 	digitalWrite(Pin, Value);
 #elif USE_DEV_LIB
 	SYSFS_GPIO_Write(Pin, Value);
+#elif USE_PIGPIO_LIB
+	gpioWrite(Pin, Value);
 #endif
 #endif
 
@@ -72,6 +80,8 @@ UBYTE DEV_Digital_Read(UWORD Pin)
 	Read_value = digitalRead(Pin);
 #elif USE_DEV_LIB
 	Read_value = SYSFS_GPIO_Read(Pin);
+#elif USE_PIGPIO_LIB
+	Read_value = gpioRead(Pin);
 #endif
 #endif
 
@@ -97,6 +107,8 @@ void DEV_SPI_WriteByte(uint8_t Value)
 	wiringPiSPIDataRW(0,&Value,1);
 #elif USE_DEV_LIB
 	DEV_HARDWARE_SPI_TransferByte(Value);
+#elif USE_PIGPIO_LIB
+	spiWrite(spiHandle,&Value,1);
 #endif
 #endif
 
@@ -119,6 +131,8 @@ void DEV_SPI_Write_nByte(uint8_t *pData, uint32_t Len)
 	wiringPiSPIDataRW(0, pData, Len);
 #elif USE_DEV_LIB
 	DEV_HARDWARE_SPI_Transfer(pData, Len);
+#elif USE_PIGPIO_LIB
+	spiWrite(spiHandle, pData, Len);
 #endif
 #endif
 
@@ -161,6 +175,13 @@ void DEV_GPIO_Mode(UWORD Pin, UWORD Mode)
 		SYSFS_GPIO_Direction(Pin, SYSFS_GPIO_OUT);
 		// Debug("OUT Pin = %d\r\n",Pin);
 	}
+#elif USE_PIGPIO_LIB
+	if(Mode == 0 || Mode == PI_INPUT){
+		gpioSetMode(Pin,PI_INPUT);
+		gpioSetPullUpDown(Pin,PI_PUD_UP);
+	}else{
+		gpioSetMode(Pin,PI_OUTPUT);
+	}
 #endif
 #endif
 
@@ -189,6 +210,8 @@ void DEV_Delay_ms(UDOUBLE xms)
 	for(i=0; i < xms; i++) {
 		usleep(1000);
 	}
+#elif USE_PIGPIO_LIB
+	gpioDelay(xms*1000);
 #endif
 #endif
 
@@ -325,6 +348,10 @@ UBYTE DEV_Module_Init(void)
 	DEV_GPIO_Init();
 	DEV_HARDWARE_SPI_begin("/dev/spidev0.0");
     DEV_HARDWARE_SPI_setSpeed(10000000);
+#elif USE_PIGPIO_LIB
+	DEV_GPIO_Init();
+	spiHandle = spiOpen(0,10000000,0);
+	return 0;
 #endif
 
 #elif JETSON
@@ -367,6 +394,12 @@ void DEV_Module_Exit(void)
 	DEV_Digital_Write(EPD_RST_PIN, 0);
 #elif USE_DEV_LIB
 	DEV_HARDWARE_SPI_end();
+	DEV_Digital_Write(EPD_CS_PIN, 0);
+	DEV_Digital_Write(EPD_DC_PIN, 0);
+	DEV_Digital_Write(EPD_RST_PIN, 0);
+#elif USE_PIGPIO_LIB
+	spiClose(spiHandle);
+	spiHandle = -1;
 	DEV_Digital_Write(EPD_CS_PIN, 0);
 	DEV_Digital_Write(EPD_DC_PIN, 0);
 	DEV_Digital_Write(EPD_RST_PIN, 0);
