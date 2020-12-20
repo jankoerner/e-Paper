@@ -48,6 +48,9 @@ Color Index
 #define EPD_4IN01F_WIDTH       640
 #define EPD_4IN01F_HEIGHT      400
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_4IN01F_Clear(UBYTE color);
 void EPD_4IN01F_Sleep(void);
 void EPD_Init(void);
@@ -56,6 +59,9 @@ void EPD_4IN01F_Display(const UBYTE *image);
 void EPD_4IN01F_Init(void);
 void EPD_4IN01F_Display_part(const UBYTE *image, UWORD xstart, UWORD ystart, 
 								UWORD image_width, UWORD image_heigh);
+#ifdef __cplusplus
+}
+#endif							
 #endif
 
 

@@ -118,6 +118,9 @@
 #define EPD_4IN2_WIDTH       400
 #define EPD_4IN2_HEIGHT      300
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_4IN2_Init(void);
 void EPD_4IN2_Clear(void);
 void EPD_4IN2_Display(UBYTE *Image);
@@ -126,4 +129,7 @@ void EPD_4IN2_PartialDisplay(UWORD X_start,UWORD Y_start,UWORD X_end,UWORD Y_end
 
 void EPD_4IN2_Init_4Gray(void);
 void EPD_4IN2_4GrayDisplay(const UBYTE *Image);
+#ifdef __cplusplus
+}
+#endif
 #endif

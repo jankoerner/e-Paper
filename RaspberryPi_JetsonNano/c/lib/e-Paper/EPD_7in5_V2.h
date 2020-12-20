@@ -40,10 +40,15 @@
 #define EPD_7IN5_V2_WIDTH       800
 #define EPD_7IN5_V2_HEIGHT      480
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 UBYTE EPD_7IN5_V2_Init(void);
 void EPD_7IN5_V2_Clear(void);
 void EPD_7IN5_V2_ClearBlack(void);
 void EPD_7IN5_V2_Display(const UBYTE *blackimage);
 void EPD_7IN5_V2_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

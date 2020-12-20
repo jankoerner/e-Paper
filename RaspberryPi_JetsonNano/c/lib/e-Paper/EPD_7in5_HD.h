@@ -38,10 +38,15 @@
 #define EPD_7IN5_HD_WIDTH       880
 #define EPD_7IN5_HD_HEIGHT      528
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_7IN5_HD_Init(void);
 void EPD_7IN5_HD_Clear(void);
 void EPD_7IN5_HD_ClearBlack(void);
 void EPD_7IN5_HD_Display(const UBYTE *blackimage);
 void EPD_7IN5_HD_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

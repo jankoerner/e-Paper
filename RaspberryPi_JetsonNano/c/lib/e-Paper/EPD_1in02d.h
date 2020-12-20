@@ -36,12 +36,18 @@
 #define EPD_1IN02_WIDTH   80
 #define EPD_1IN02_HEIGHT  128
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 UBYTE EPD_1IN02_Init(void);
 void EPD_1IN02_Clear(void);
 void EPD_1IN02_Display(UBYTE *Image);
 void EPD_1IN02_DisplayPartial(UBYTE *Image1, UBYTE *Image2);
 void EPD_1IN02_Sleep(void);
 void EPD_1IN02_Part_Init(void);
+#ifdef __cplusplus
+}
+#endif
 #endif
 
 

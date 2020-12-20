@@ -80,6 +80,9 @@
 
 #endif
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 /**
  * data
 **/
@@ -106,5 +109,8 @@ void DEV_Delay_ms(UDOUBLE xms);
 UBYTE DEV_Module_Init(void);
 void DEV_Module_Exit(void);
 
-
+#ifdef __cplusplus
+}
 #endif
+#endif
+

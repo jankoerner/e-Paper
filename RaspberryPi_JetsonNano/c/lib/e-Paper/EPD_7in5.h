@@ -93,9 +93,14 @@
 #define EPD_7IN5_WIDTH       640
 #define EPD_7IN5_HEIGHT      384
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_7IN5_Init(void);
 void EPD_7IN5_Clear(void);
 void EPD_7IN5_Display(UBYTE *Image);
 void EPD_7IN5_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

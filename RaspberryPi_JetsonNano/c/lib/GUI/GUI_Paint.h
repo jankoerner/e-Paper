@@ -73,6 +73,9 @@
 #include "DEV_Config.h"
 #include "../Fonts/fonts.h"
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 /**
  * Image attributes
 **/
@@ -205,8 +208,9 @@ void Paint_DrawTime(UWORD Xstart, UWORD Ystart, PAINT_TIME *pTime, sFONT* Font, 
 
 //pic
 void Paint_DrawBitMap(const unsigned char* image_buffer);
-
-
+#ifdef __cplusplus
+}
+#endif
 #endif
 
 

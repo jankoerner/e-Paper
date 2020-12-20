@@ -90,9 +90,14 @@
 #define EPD_4IN2BC_WIDTH       400
 #define EPD_4IN2BC_HEIGHT      300
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_4IN2BC_Init(void);
 void EPD_4IN2BC_Clear(void);
 void EPD_4IN2BC_Display(const UBYTE *blackimage, const UBYTE *ryimage);
 void EPD_4IN2BC_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

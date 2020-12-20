@@ -36,12 +36,15 @@
 #define EPD_2IN66_WIDTH       152
 #define EPD_2IN66_HEIGHT      296
 
-
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_2IN66_Init(void);
 void EPD_2IN66_Display(UBYTE *Image);
 void EPD_2IN66_Clear(void);
-
 void EPD_2IN66_Init_partial();
-
 void EPD_2IN66_Sleep(void);
+#ifdef __cplusplus
+}
+#endif
 #endif

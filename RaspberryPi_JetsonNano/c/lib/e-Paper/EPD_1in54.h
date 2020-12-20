@@ -96,9 +96,14 @@
 #define EPD_1IN54_FULL			0
 #define EPD_1IN54_PART			1
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_1IN54_Init(UBYTE Mode);
 void EPD_1IN54_Clear(void);
 void EPD_1IN54_Display(UBYTE *Image);
 void EPD_1IN54_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

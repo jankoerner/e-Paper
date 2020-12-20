@@ -60,10 +60,15 @@
 #define EPD_2IN9D_WIDTH   128
 #define EPD_2IN9D_HEIGHT  296
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_2IN9D_Init(void);
 void EPD_2IN9D_Clear(void);
 void EPD_2IN9D_Display(UBYTE *Image);
 void EPD_2IN9D_DisplayPart(UBYTE *Image);
 void EPD_2IN9D_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

@@ -95,9 +95,14 @@
 #define EPD_2IN7B_WIDTH       176
 #define EPD_2IN7B_HEIGHT      264
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_2IN7B_Init(void);
 void EPD_2IN7B_Clear(void);
 void EPD_2IN7B_Display(UBYTE *Imageblack, UBYTE *Imagered);
 void EPD_2IN7B_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

@@ -62,11 +62,16 @@
 #define EPD_2IN13_V2_FULL			0
 #define EPD_2IN13_V2_PART			1
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_2IN13_V2_Init(UBYTE Mode);
 void EPD_2IN13_V2_Clear(void);
 void EPD_2IN13_V2_Display(UBYTE *Image);
 void EPD_2IN13_V2_DisplayPart(UBYTE *Image);
 void EPD_2IN13_V2_DisplayPartBaseImage(UBYTE *Image);
 void EPD_2IN13_V2_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

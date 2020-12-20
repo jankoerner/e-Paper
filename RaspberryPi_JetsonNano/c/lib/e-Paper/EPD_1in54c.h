@@ -87,9 +87,14 @@
 #define EPD_1IN54C_WIDTH       152
 #define EPD_1IN54C_HEIGHT      152
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_1IN54C_Init(void);
 void EPD_1IN54C_Clear(void);
 void EPD_1IN54C_Display(const UBYTE *blackimage, const UBYTE *redimage);
 void EPD_1IN54C_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

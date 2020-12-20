@@ -36,9 +36,14 @@
 #define EPD_5in83_V2_WIDTH       648
 #define EPD_5in83_V2_HEIGHT      480
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_5in83_V2_Init(void);
 void EPD_5in83_V2_Clear(void);
 void EPD_5in83_V2_Display(UBYTE *Image);
 void EPD_5in83_V2_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

@@ -89,9 +89,14 @@
 #define EPD_2IN13BC_WIDTH       104
 #define EPD_2IN13BC_HEIGHT      212
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 void EPD_2IN13BC_Init(void);
 void EPD_2IN13BC_Clear(void);
 void EPD_2IN13BC_Display(const UBYTE *blackimage, const UBYTE *ryimage);
 void EPD_2IN13BC_Sleep(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif
